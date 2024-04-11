@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     var form = document.getElementById("jobApplicationForm");
-    var jobList = document.getElementById("jobList"); // Assuming you have a <ul> element with id="jobList"
+    var selectElement = document.getElementById("jobSelect");
 
     // Function to create list items for each job
     function createJobListItem(job) {
@@ -26,12 +26,12 @@ document.addEventListener("DOMContentLoaded", function() {
     .then(responseData => {
         console.log('Data retrieved successfully:', responseData);
         // Clear previous job list items
-        jobList.innerHTML = '';
+        selectElement.innerHTML = '';
 
         // Create list items for each job and append them to the job list
         responseData.forEach(job => {
             var listItem = createJobListItem(job);
-            jobList.appendChild(listItem);
+            selectElement.appendChild(listItem);
         });
     })
     .catch(error => {
@@ -39,12 +39,6 @@ document.addEventListener("DOMContentLoaded", function() {
         // Display an error message to the user or handle the error
     });
 
-    // Event listener for job selection
-    document.getElementById("jobList").addEventListener("change", function(event) {
-        var selectedJobId = event.target.value; // Get the selected job ID
-        console.log("Selected job ID:", selectedJobId);
-        // Optionally, you can store the selected job ID in a variable or use it for further processing
-    });
 
     form.addEventListener("submit", function(event) {
         event.preventDefault(); // Prevent the default form submission
@@ -74,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 first_name: formData.get('first_name'),
                 last_name: lastName,
                 email: email,
-                jobOppId: selectedJobId
+                jobOppId: jobOppId
             };
         
             // Wrap the data in the required JSON structure
