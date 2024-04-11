@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
         event.preventDefault(); // Prevent the default form submission
         
         // Get access token when the form is submitted
-        getAccessToken().then(accessToken => {
+        // getAccessToken().then(accessToken => {
             // Get form data
             var formData = new FormData(form);
             
@@ -56,6 +56,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 // Display an error message to the user
                 alert('There was an error submitting your application. Please try again later.');
             });
-        });
+        // });
     });
 });
