@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
             var requestData = {
                 newJsonJobApplication: data
             };
+        console.log('requestData: ', requestData);
 
             // Send data to Salesforce REST API
             fetch('https://delaware-12b-dev-ed.develop.my.salesforce.com/services/apexrest/SendJobApplication', {
