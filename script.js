@@ -39,15 +39,11 @@ document.addEventListener("DOMContentLoaded", function() {
         // Display an error message to the user or handle the error
     });
 
-    var jobOppId; // Variable to store the selected job ID
-
-    // Event listener to capture selected job ID
-    document.getElementById("jobList").addEventListener("click", function(event) {
-        var selectedJob = event.target;
-        if (selectedJob.tagName === "LI") {
-            jobOppId = selectedJob.getAttribute("data-job-id");
-            console.log("Selected job ID:", jobOppId);
-        }
+    // Event listener for job selection
+    document.getElementById("jobList").addEventListener("change", function(event) {
+        var selectedJobId = event.target.value; // Get the selected job ID
+        console.log("Selected job ID:", selectedJobId);
+        // Optionally, you can store the selected job ID in a variable or use it for further processing
     });
 
     form.addEventListener("submit", function(event) {
@@ -78,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 first_name: formData.get('first_name'),
                 last_name: lastName,
                 email: email,
-                jobOppId: jobOppId
+                jobOppId: selectedJobId
             };
         
             // Wrap the data in the required JSON structure
