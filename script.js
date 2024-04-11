@@ -6,8 +6,9 @@ document.addEventListener("DOMContentLoaded", function() {
     // Event listener to capture selected job ID
     selectElement.addEventListener("change", function(event) {
         var selectedOption = selectElement.options[selectElement.selectedIndex];
-        jobOppId = selectedOption.id;
+        jobOppId = selectedOption.value;
         console.log("Selected job ID:", jobOppId);
+        console.log("Event Selected job ID:", event.target.value);
     });
     // Function to create list items for each job
     function createJobListItem(job) {
