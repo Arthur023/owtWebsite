@@ -30,6 +30,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 last_name: lastName,
                 email: email
             };
+        
+            // Wrap the data in the required JSON structure
+            var requestData = {
+                newJsonJobApplication: data
+            };
 
             // Send data to Salesforce REST API
             fetch('https://delaware-12b-dev-ed.develop.my.salesforce.com/services/apexrest/SendJobApplication', {
@@ -38,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + '00DQy000006qNQz!AQEAQHrRbQfer6sm_5ArqUrWnkgmyfc5lDviKmdsUwbvnXOiOKApZFVUYXeKpxhRbuxWI9tggk_p3qcCkf8jRe88LuU8POvS' 
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify(requestData)
             })
             .then(response => {
                 if (!response.ok) {
