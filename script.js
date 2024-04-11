@@ -17,7 +17,9 @@ document.addEventListener("DOMContentLoaded", function() {
     function createJobListItem(job) {
         var listItem = document.createElement('option');
         listItem.textContent = job.name;
-        listItem.setAttribute('data-job-id', job.id); // Store job ID as a data attribute
+        listItem.value = job.id;
+        listItem.id = job.id;
+        // listItem.setAttribute('data-job-id', job.id); // Store job ID as a data attribute
         return listItem;
     }
 
