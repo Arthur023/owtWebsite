@@ -33,6 +33,10 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log('Data retrieved successfully:', responseData);
         // Clear previous job list items
         selectElement.innerHTML = '';
+        var noneOption = document.createElement('option');
+        noneOption.textContent = 'None';
+        noneOption.setAttribute('value', ''); // Empty value for the "None" option
+        selectElement.appendChild(noneOption);
 
         // Create list items for each job and append them to the job list
         responseData.forEach(job => {
