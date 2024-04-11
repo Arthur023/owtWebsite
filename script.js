@@ -2,9 +2,15 @@ document.addEventListener("DOMContentLoaded", function() {
     var form = document.getElementById("jobApplicationForm");
     var selectElement = document.getElementById("jobSelect");
 
+    // Event listener to capture selected job ID
+    selectElement.addEventListener("change", function(event) {
+        var selectedOption = selectElement.options[selectElement.selectedIndex];
+        var jobOppId = selectedOption.value;
+        console.log("Selected job ID:", jobOppId);
+    });
     // Function to create list items for each job
     function createJobListItem(job) {
-        var listItem = document.createElement('li');
+        var listItem = document.createElement('option');
         listItem.textContent = job.name;
         listItem.setAttribute('data-job-id', job.id); // Store job ID as a data attribute
         return listItem;
