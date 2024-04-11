@@ -1,5 +1,54 @@
 document.addEventListener("DOMContentLoaded", function() {
     var form = document.getElementById("jobApplicationForm");
+    var jobList = document.getElementById("jobList"); // Assuming you have a <ul> element with id="jobList"
+
+    // Function to create list items for each job
+    function createJobListItem(job) {
+        var listItem = document.createElement('li');
+        listItem.textContent = job.name;
+        listItem.setAttribute('data-job-id', job.id); // Store job ID as a data attribute
+        return listItem;
+    }
+
+    // Fetch data from Salesforce REST API using GET method when the page loads
+    fetch('https://delaware-12b-dev-ed.develop.my.salesforce.com/services/apexrest/SendJobApplication', {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + '00DQy000006qNQz!AQEAQHrRbQfer6sm_5ArqUrWnkgmyfc5lDviKmdsUwbvnXOiOKApZFVUYXeKpxhRbuxWI9tggk_p3qcCkf8jRe88LuU8POvS' 
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json(); 
+    })
+    .then(responseData => {
+        console.log('Data retrieved successfully:', responseData);
+        // Clear previous job list items
+        jobList.innerHTML = '';
+
+        // Create list items for each job and append them to the job list
+        responseData.forEach(job => {
+            var listItem = createJobListItem(job);
+            jobList.appendChild(listItem);
+        });
+    })
+    .catch(error => {
+        console.error('Error retrieving data:', error);
+        // Display an error message to the user or handle the error
+    });
+
+    var jobOppId; // Variable to store the selected job ID
+
+    // Event listener to capture selected job ID
+    document.getElementById("jobList").addEventListener("click", function(event) {
+        var selectedJob = event.target;
+        if (selectedJob.tagName === "LI") {
+            jobOppId = selectedJob.getAttribute("data-job-id");
+            console.log("Selected job ID:", jobOppId);
+        }
+    });
 
     form.addEventListener("submit", function(event) {
         event.preventDefault(); // Prevent the default form submission
@@ -28,7 +77,8 @@ document.addEventListener("DOMContentLoaded", function() {
             var data = {
                 first_name: formData.get('first_name'),
                 last_name: lastName,
-                email: email
+                email: email,
+                jobOppId: jobOppId
             };
         
             // Wrap the data in the required JSON structure
