@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
     fetch('https://delaware-12b-dev-ed.develop.my.salesforce.com/services/apexrest/SendJobApplication', {
         method: 'GET',
         headers: {
-            'Authorization': 'Bearer ' + '00DQy000006qNQz!AQEAQKy3mFo5NMMruFik3s9EFRj.h0w6i2jCdbzPjUGecnK1iblZEeiz26zWT_8xbe636tlVQEOGCvQJ7VU2kK2bJV4Sfpot' 
+            'Authorization': 'Bearer ' + '00DQy000006qNQz!AQEAQMPp98BDfYs_sC1Y6H80IJrj6UdpmH942oxPJbGLeanHm0G2MVNHzrMLcZyf21_4Ba.arvQzeDXwP78flMjDoSiUB_N3' 
         }
     })
     .then(response => {
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + '00DQy000006qNQz!AQEAQKy3mFo5NMMruFik3s9EFRj.h0w6i2jCdbzPjUGecnK1iblZEeiz26zWT_8xbe636tlVQEOGCvQJ7VU2kK2bJV4Sfpot' 
+                    'Authorization': 'Bearer ' + '00DQy000006qNQz!AQEAQMPp98BDfYs_sC1Y6H80IJrj6UdpmH942oxPJbGLeanHm0G2MVNHzrMLcZyf21_4Ba.arvQzeDXwP78flMjDoSiUB_N3' 
                 },
                 body: JSON.stringify(requestData)
             })
